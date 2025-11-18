@@ -4,8 +4,8 @@ Một công cụ toàn diện để tự động hóa việc chuyển nhượng 
 
 ## Tính năng của tool
 
-- ✅ **Đọc thông tin từ CSV**: Đọc seed phrase và địa chỉ nhận từ file donor_wallets.csv
-- ✅ **Lựa chọn tài khoản ví linh hoạt**: Chỉ định chỉ mục (index) của từng tài khoản hoặc theo khoảng (ví dụ: "0-49" hoặc "0, 5, 10-15")
+- ✅ **Đọc thông tin từ CSV**: Đọc seed phrase và địa chỉ nhận từ file [donor_wallets.csv](https://docs.google.com/spreadsheets/d/1ZlMicJPCqZBvqUZZg88RpM-VzhCicwwh414R9w8RFQI/edit?gid=0#gid=0)
+- ✅ **Lựa chọn tài khoản ví linh hoạt**: Chọn chỉ mục (index) của từng tài khoản hoặc theo khoảng (ví dụ: "0-49" hoặc "0, 5, 10-15")
 - ✅ **Hỗ trợ hoàn tác lệnh gom trước đó**: Hoàn tác donation trước đó bằng cách để trống địa chỉ nhận
 - ✅ **Xử lý hàng loạt**: Xử lý nhiều seed phrase với nhiều tài khoản ví cùng lúc
 - ✅ **Tích hợp API**: Tự động gửi donation đến Scavenger Mine API
@@ -274,6 +274,7 @@ Nếu gặp vấn đề hoặc có câu hỏi:
 3. Xác minh định dạng file CSV của bạn khớp với các ví dụ
 4. Đảm bảo tất cả địa chỉ donor đã được đăng ký với Scavenger Mine
 5. Với thao tác hoàn tác, đảm bảo địa chỉ có donation đang hoạt động để hoàn tác
+
 
 
 

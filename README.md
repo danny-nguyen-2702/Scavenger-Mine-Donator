@@ -54,6 +54,7 @@ seed phrase để hoàn tác,0-9,
   - Cũng có thể dùng từ "self" để chỉ tự chuyển nhượng
 
 Xem ví dụ về file donor_wallets.csv ở đây: https://docs.google.com/spreadsheets/d/1ZlMicJPCqZBvqUZZg88RpM-VzhCicwwh414R9w8RFQI/edit?usp=sharing
+
 Bạn có thể tạo 1 bản copy từ file ví dụ bên trên, chỉnh sửa lại thông tin cho phù hợp với mục đích sử dụng của bạn. Rồi tải file về theo định dạng csv. Đổi lại tên file thành `donor_wallets.csv`
 
 ## Định dạng chỉ số tài khoản
@@ -330,5 +331,6 @@ Nếu gặp vấn đề hoặc có câu hỏi:
 3. Xác minh định dạng file CSV của bạn khớp với các ví dụ
 4. Đảm bảo tất cả địa chỉ donor đã được đăng ký với Scavenger Mine
 5. Với thao tác hoàn tác, đảm bảo địa chỉ có donation đang hoạt động để hoàn tác
+
 
 

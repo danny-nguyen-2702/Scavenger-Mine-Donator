@@ -1,0 +1,29 @@
+{
+  "name": "scavenger-mine-donation-tool",
+  "version": "1.0.0",
+  "description": "Tool to automate NIGHT token donations from multiple wallets to recipient addresses",
+  "type": "module",
+  "main": "donator.js",
+  "scripts": {
+    "start": "node donator.js",
+    "test": "echo \"No tests configured yet\""
+  },
+  "keywords": [
+    "scavenger-mine",
+    "cardano",
+    "midnight",
+    "donation",
+    "crypto"
+  ],
+  "author": "Manh Nguyen",
+  "license": "MIT",
+  "dependencies": {
+    "lucid-cardano": "^0.10.7",
+    "axios": "^1.6.2",
+    "exceljs": "^4.4.0",
+    "csv-parser": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

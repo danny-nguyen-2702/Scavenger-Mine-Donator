@@ -19,81 +19,11 @@ Một công cụ toàn diện để tự động hóa việc chuyển nhượng 
 
 - Node.js phiên bản 16 trở lên
 - npm hoặc yarn package manager
-- Truy cập vào Scavenger Mine API (https://scavenger.prod.gd.midnighttge.io)
+- Có kết nối mạng, có thể truy cập vào Scavenger Mine API (https://scavenger.prod.gd.midnighttge.io)
 
-## Cài đặt
-
-1. Clone hoặc tải về repository này
-
-2. Cài đặt các dependencies:
-
-```bash
-npm install
-```
-
-## Thiết lập
-
-1. Tạo file `donor_wallets.csv` trong cùng thư mục với cấu trúc sau:
-
-```csv
-seed phrase,account indexes,recipient address
-seed phrase của bạn ở đây,0-49,addr1q9exzqlgakcxxac9mu74zjpzr2ha90yktuc6xpp57tz58u68nfqqsdtksuyg5enhcag6ul96ufmf6ce3p84fz34ny0fs78s482
-seed phrase khác,"0, 1, 5, 10-15, 20, 25-35",addr1q9exzqlgakcxxac9mu74zjpzr2ha90yktuc6xpp57tz58u68nfqqsdtksuyg5enhcag6ul96ufmf6ce3p84fz34ny0fs78s482
-seed phrase để hoàn tác,0-9,
-```
-
-**Định dạng file CSV:**
-
-- `seed phrase`: Cụm từ ghi nhớ mnemonic (24 từ)
-- `account indexes`: Chỉ số tài khoản cần xử lý, hỗ trợ hai định dạng:
-  - Chỉ số riêng lẻ: `"0, 3, 6, 7, 12"` (phân tách bằng dấu phẩy)
-  - Khoảng: `"0-49"` (xử lý tài khoản từ 0 đến 49)
-  - Kết hợp: `"0, 5, 10-15, 20, 25-35"` (kết hợp riêng lẻ và khoảng)
-- `recipient address`: Địa chỉ Cardano sẽ nhận token NIGHT đã hợp nhất
-  - Để trống để hoàn tác donation trước đó (tự chuyển nhượng)
-  - Cũng có thể dùng từ "self" để chỉ tự chuyển nhượng
-
-Xem ví dụ về file donor_wallets.csv ở đây: https://docs.google.com/spreadsheets/d/1ZlMicJPCqZBvqUZZg88RpM-VzhCicwwh414R9w8RFQI/edit?usp=sharing
-
-Bạn có thể tạo 1 bản copy từ file ví dụ bên trên, chỉnh sửa lại thông tin cho phù hợp với mục đích sử dụng của bạn. Rồi tải file về theo định dạng csv. Đổi lại tên file thành `donor_wallets.csv`
-
-## Định dạng chỉ số tài khoản
-
-Công cụ hiện hỗ trợ chỉ định chỉ số tài khoản linh hoạt:
-
-### Chỉ số riêng lẻ
-
-```csv
-seed phrase,account indexes,recipient address
-seed của bạn,0,addr1...
-seed của bạn,"0, 5, 10",addr1...
-```
-
-### Định dạng khoảng
-
-```csv
-seed phrase,account indexes,recipient address
-seed của bạn,0-49,addr1...
-seed của bạn,100-199,addr1...
-```
-
-### Định dạng kết hợp
-
-```csv
-seed phrase,account indexes,recipient address
-seed của bạn,"0-9, 15, 20-29, 50",addr1...
-```
-
-### Tự donate cho chính nó (Hoàn tác)
-
-Để hoàn tác lệnh donation trước đó, để trống địa chỉ nhận:
-
-```csv
-seed phrase,account indexes,recipient address
-seed của bạn,0-49,
-```
 
 ## Cách sử dụng
+
 1. Truy cập vào file này https://docs.google.com/spreadsheets/d/1ZlMicJPCqZBvqUZZg88RpM-VzhCicwwh414R9w8RFQI/edit?gid=0#gid=0
 2. Tạo 1 bản sao bằng cách ấn vào File -> Make a copy
 3. Chỉnh sửa lại thông tin ở các cột seed phrase, account indexes và recipient address theo mục đích của bạn
@@ -104,11 +34,22 @@ seed của bạn,0-49,
 8. Click đúp vào file run.bat để chạy tool
 9. Xem kết quả ở file donation_results_xxxxxxx_xxxxxx.xlsx
 
+**Định dạng file donor_wallets.csv:**
+
+- `seed phrase`: Cụm từ ghi nhớ mnemonic (24 từ)
+- `account indexes`: Chỉ số tài khoản cần xử lý, hỗ trợ hai định dạng:
+  - Chỉ số riêng lẻ: `"0, 3, 6, 7, 12"` (phân tách bằng dấu phẩy)
+  - Khoảng: `"0-49"` (xử lý tài khoản từ 0 đến 49)
+  - Kết hợp: `"0, 5, 10-15, 20, 25-35"` (kết hợp riêng lẻ và khoảng)
+- `recipient address`: Địa chỉ Cardano sẽ nhận token NIGHT đã hợp nhất
+  - Để trống để hoàn tác donation trước đó (tự chuyển nhượng)
+  - Cũng có thể dùng từ "self" để chỉ tự chuyển nhượng
+  
 ## Đầu ra
 
 Công cụ tạo file Excel có dấu thời gian (ví dụ: `donation_results_20240315_143022.xlsx`) với hai sheet:
 
-### Sheet 1: Tóm tắt
+### Sheet 1: Tóm tắt (Summary)
 
 - Tổng quan về mỗi seed phrase được xử lý
 - Chỉ số tài khoản đã sử dụng
@@ -117,17 +58,19 @@ Công cụ tạo file Excel có dấu thời gian (ví dụ: `donation_results_2
 - Phần trăm tỷ lệ thành công
 - Tổng cộng ở cuối
 
-### Sheet 2: Chi tiết
+### Sheet 2: Chi tiết (Details)
 
 - Thông tin chi tiết cho mỗi lần thử donation
-- Bao gồm địa chỉ donor, địa chỉ nhận, chữ ký
-- Loại thao tác (Donation hoặc Hoàn tác)
+- Bao gồm địa chỉ cho (donor), địa chỉ nhận (recipient), chữ ký
+- Loại thao tác
+-   Donation: Chuyển cho ví khác
+-   Undo: Hoàn tác, chuyển lại NIGHT về chính ví đó
 - Phản hồi API đầy đủ
 - Thông báo lỗi cho các giao dịch thất bại
-- Chỉ báo thành công/thất bại có mã màu
+- Phân loại thành công/thất bại
 - Đánh dấu màu cam cho các thao tác hoàn tác
 
-## Cách hoạt động
+## Cách tool hoạt động
 
 1. **Phân tích CSV**: Đọc file `donor_wallets.csv` để lấy seed phrase và địa chỉ nhận
 
@@ -331,6 +274,7 @@ Nếu gặp vấn đề hoặc có câu hỏi:
 3. Xác minh định dạng file CSV của bạn khớp với các ví dụ
 4. Đảm bảo tất cả địa chỉ donor đã được đăng ký với Scavenger Mine
 5. Với thao tác hoàn tác, đảm bảo địa chỉ có donation đang hoạt động để hoàn tác
+
 
 
 

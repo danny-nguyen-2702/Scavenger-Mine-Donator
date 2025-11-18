@@ -93,18 +93,15 @@ seed của bạn,0-49,
 ```
 
 ## Cách sử dụng
-
-Chạy công cụ donation:
-
-```bash
-npm start
-```
-
-hoặc
-
-```bash
-node donator.js
-```
+1. Truy cập vào file này https://docs.google.com/spreadsheets/d/1ZlMicJPCqZBvqUZZg88RpM-VzhCicwwh414R9w8RFQI/edit?gid=0#gid=0
+2. Tạo 1 bản sao bằng cách ấn vào File -> Make a copy
+3. Chỉnh sửa lại thông tin ở các cột seed phrase, account indexes và recipient address theo mục đích của bạn
+4. Tải file về theo định dạng .csv bằng cách ấn vào File -> Download -> Comma Separated Values (.csv)
+5. Đổi tên file csv vừa tải về thành `donor_wallets.csv`. Để cùng thư mục với tool
+6. Tải và cài đặt nodejs ở trang https://nodejs.org/en
+7. Click đúp vào file setup.bat để cài đặt các thư viện (chỉ cần làm 1 lần)
+8. Click đúp vào file run.bat để chạy tool
+9. Xem kết quả ở file donation_results_xxxxxxx_xxxxxx.xlsx
 
 ## Đầu ra
 
@@ -333,4 +330,5 @@ Nếu gặp vấn đề hoặc có câu hỏi:
 3. Xác minh định dạng file CSV của bạn khớp với các ví dụ
 4. Đảm bảo tất cả địa chỉ donor đã được đăng ký với Scavenger Mine
 5. Với thao tác hoàn tác, đảm bảo địa chỉ có donation đang hoạt động để hoàn tác
+
 

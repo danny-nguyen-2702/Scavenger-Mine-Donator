@@ -2,18 +2,18 @@
 
 Một công cụ toàn diện để tự động hóa việc chuyển nhượng token NIGHT từ nhiều địa chỉ ví đến các địa chỉ nhận được chỉ định thông qua Scavenger Mine API.
 
-## Tính năng
+## Tính năng của tool
 
-- ✅ **Nhập từ CSV**: Tải seed phrase và địa chỉ nhận từ file CSV
-- ✅ **Lựa chọn tài khoản linh hoạt**: Chỉ định từng tài khoản hoặc khoảng (ví dụ: "0-49" hoặc "0, 5, 10-15")
-- ✅ **Hỗ trợ tự chuyển nhượng**: Hoàn tác donation trước đó bằng cách để trống địa chỉ nhận
-- ✅ **Xử lý hàng loạt**: Xử lý nhiều seed phrase với nhiều tài khoản cùng lúc
+- ✅ **Đọc thông tin từ CSV**: Đọc seed phrase và địa chỉ nhận từ file donor_wallets.csv
+- ✅ **Lựa chọn tài khoản ví linh hoạt**: Chỉ định chỉ mục (index) của từng tài khoản hoặc theo khoảng (ví dụ: "0-49" hoặc "0, 5, 10-15")
+- ✅ **Hỗ trợ hoàn tác lệnh gom trước đó**: Hoàn tác donation trước đó bằng cách để trống địa chỉ nhận
+- ✅ **Xử lý hàng loạt**: Xử lý nhiều seed phrase với nhiều tài khoản ví cùng lúc
 - ✅ **Tích hợp API**: Tự động gửi donation đến Scavenger Mine API
 - ✅ **Báo cáo Excel**: Tạo báo cáo Excel chi tiết với tóm tắt và chi tiết giao dịch
-- ✅ **Đầu ra có dấu thời gian**: Mỗi báo cáo được lưu với dấu thời gian duy nhất
-- ✅ **Xử lý lỗi**: Xử lý lỗi mạnh mẽ với thông báo lỗi chi tiết
+- ✅ **File báo cáo có lưu mốc thời gian**: Mỗi file báo cáo được lưu với mốc thời gian duy nhất. Người dùng có thể xem lại file cũ.
+- ✅ **Xử lý lỗi**: Xử lý lỗi với thông báo lỗi chi tiết
 - ✅ **Theo dõi tiến trình**: Cập nhật tiến trình theo thời gian thực trong quá trình xử lý
-- ✅ **Bảo vệ giới hạn tốc độ**: Độ trễ tích hợp để tránh giới hạn API
+- ✅ **Giới hạn tốc độ**: Độ trễ tích hợp để tránh giới hạn API
 
 ## Yêu cầu tiên quyết
 
@@ -37,8 +37,8 @@ npm install
 
 ```csv
 seed phrase,account indexes,recipient address
-seed phrase của bạn ở đây,0-49,addr1qx2luazflus83phn9hcltqvgp27dr3rf78g9jmkac6s6ntmugwgkw3cxg7s7h7y9mmuxj563txpazcwl58wdpvfkm4aq62cl4z
-seed phrase khác,"0, 1, 5, 10-15, 20, 25-35",addr1qx2luazflus83phn9hcltqvgp27dr3rf78g9jmkac6s6ntmugwgkw3cxg7s7h7y9mmuxj563txpazcwl58wdpvfkm4aq62cl4z
+seed phrase của bạn ở đây,0-49,addr1q9exzqlgakcxxac9mu74zjpzr2ha90yktuc6xpp57tz58u68nfqqsdtksuyg5enhcag6ul96ufmf6ce3p84fz34ny0fs78s482
+seed phrase khác,"0, 1, 5, 10-15, 20, 25-35",addr1q9exzqlgakcxxac9mu74zjpzr2ha90yktuc6xpp57tz58u68nfqqsdtksuyg5enhcag6ul96ufmf6ce3p84fz34ny0fs78s482
 seed phrase để hoàn tác,0-9,
 ```
 
@@ -52,6 +52,9 @@ seed phrase để hoàn tác,0-9,
 - `recipient address`: Địa chỉ Cardano sẽ nhận token NIGHT đã hợp nhất
   - Để trống để hoàn tác donation trước đó (tự chuyển nhượng)
   - Cũng có thể dùng từ "self" để chỉ tự chuyển nhượng
+
+Xem ví dụ về file donor_wallets.csv ở đây: https://docs.google.com/spreadsheets/d/1ZlMicJPCqZBvqUZZg88RpM-VzhCicwwh414R9w8RFQI/edit?usp=sharing
+Bạn có thể tạo 1 bản copy từ file ví dụ bên trên, chỉnh sửa lại thông tin cho phù hợp với mục đích sử dụng của bạn. Rồi tải file về theo định dạng csv. Đổi lại tên file thành `donor_wallets.csv`
 
 ## Định dạng chỉ số tài khoản
 
@@ -80,9 +83,9 @@ seed phrase,account indexes,recipient address
 seed của bạn,"0-9, 15, 20-29, 50",addr1...
 ```
 
-### Tự chuyển nhượng (Hoàn tác)
+### Tự donate cho chính nó (Hoàn tác)
 
-Để hoàn tác donation trước đó, để trống địa chỉ nhận:
+Để hoàn tác lệnh donation trước đó, để trống địa chỉ nhận:
 
 ```csv
 seed phrase,account indexes,recipient address
@@ -137,13 +140,13 @@ Công cụ tạo file Excel có dấu thời gian (ví dụ: `donation_results_2
 
 3. **Tạo địa chỉ**: Với mỗi seed phrase, tạo địa chỉ ví dựa trên chỉ số tài khoản đã chỉ định
 
-4. **Ký thông điệp**: Ký thông điệp donation cho mỗi địa chỉ donor:
+4. **Ký xác nhận**: Ký xác nhận donation cho mỗi địa chỉ donor:
 
    ```
    Assign accumulated Scavenger rights to: <địa_chỉ_nhận>
    ```
 
-   Với tự chuyển nhượng (hoàn tác), người nhận giống với địa chỉ donor.
+   Với tính năng tự chuyển nhượng (hoàn tác), địa chỉ nhận giống với địa chỉ donor.
 
 5. **Gửi API**: Gửi mỗi donation đến Scavenger Mine API endpoint:
 
@@ -180,14 +183,14 @@ Công cụ bao gồm xử lý lỗi toàn diện cho:
 
 ## Giới hạn tốc độ
 
-Công cụ bao gồm độ trễ 1 giây giữa các lần gọi API để tránh vấn đề giới hạn tốc độ.
+Công cụ bao gồm độ trễ 1.5 giây giữa các lần gọi API để tránh vấn đề giới hạn tốc độ.
 
 ## Lưu ý bảo mật
 
 ⚠️ **Cân nhắc bảo mật quan trọng:**
 
 1. **Bảo mật Seed Phrase**: Giữ file `donor_wallets.csv` của bạn an toàn và không bao giờ chia sẻ
-2. **Hiển thị bị cắt ngắn**: Seed phrase bị cắt ngắn trong log và báo cáo vì lý do bảo mật
+2. **Nội dung báo cáo bị cắt ngắn**: Seed phrase bị cắt ngắn trong log và báo cáo vì lý do bảo mật
 3. **Xử lý cục bộ**: Tất cả các thao tác mã hóa được thực hiện cục bộ
 4. **Bảo mật API**: Chỉ gửi chữ ký đến API, không gửi seed phrase
 
@@ -229,7 +232,7 @@ Ví dụ: `donation_results_20240315_143022.xlsx`
 
 5. **"Địa chỉ chưa được đăng ký"**
 
-   - Đảm bảo địa chỉ donor đã được đăng ký với Scavenger Mine trước
+   - Đảm bảo địa chỉ của ví cho (donor) và vì nhận (recipient) đã được đăng ký với Scavenger Mine trước
 
 6. **"Địa chỉ gốc đã có chỉ định donation đang hoạt động"**
    - Địa chỉ này đã được chỉ định để donate cho địa chỉ khác
@@ -276,7 +279,7 @@ Xử lý tài khoản 0-99 cho một seed phrase:
 
 ```csv
 seed phrase,account indexes,recipient address
-seed phrase của bạn ở đây,0-99,addr1qx2luazflus83phn9hcltqvgp27dr3rf78g9jmkac6s6ntmugwgkw3cxg7s7h7y9mmuxj563txpazcwl58wdpvfkm4aq62cl4z
+seed phrase của bạn ở đây,0-99,addr1q9exzqlgakcxxac9mu74zjpzr2ha90yktuc6xpp57tz58u68nfqqsdtksuyg5enhcag6ul96ufmf6ce3p84fz34ny0fs78s482
 ```
 
 ### Ví dụ 2: Tài khoản cụ thể
@@ -285,7 +288,7 @@ Chỉ xử lý các tài khoản cụ thể:
 
 ```csv
 seed phrase,account indexes,recipient address
-seed phrase của bạn ở đây,"0, 5, 10, 15, 20",addr1qx2luazflus83phn9hcltqvgp27dr3rf78g9jmkac6s6ntmugwgkw3cxg7s7h7y9mmuxj563txpazcwl58wdpvfkm4aq62cl4z
+seed phrase của bạn ở đây,"0, 5, 10, 15, 20",addr1q9exzqlgakcxxac9mu74zjpzr2ha90yktuc6xpp57tz58u68nfqqsdtksuyg5enhcag6ul96ufmf6ce3p84fz34ny0fs78s482
 ```
 
 ### Ví dụ 3: Định dạng kết hợp
@@ -294,7 +297,7 @@ Kết hợp khoảng và chỉ số riêng lẻ:
 
 ```csv
 seed phrase,account indexes,recipient address
-seed phrase của bạn ở đây,"0-9, 15, 20-29, 50, 100-110",addr1qx2luazflus83phn9hcltqvgp27dr3rf78g9jmkac6s6ntmugwgkw3cxg7s7h7y9mmuxj563txpazcwl58wdpvfkm4aq62cl4z
+seed phrase của bạn ở đây,"0-9, 15, 20-29, 50, 100-110",addr1q9exzqlgakcxxac9mu74zjpzr2ha90yktuc6xpp57tz58u68nfqqsdtksuyg5enhcag6ul96ufmf6ce3p84fz34ny0fs78s482
 ```
 
 ### Ví dụ 4: Hoàn tác donation trước đó
@@ -312,9 +315,9 @@ Một số donation và một số hoàn tác:
 
 ```csv
 seed phrase,account indexes,recipient address
-seed một,0-49,addr1qx2luazflus83phn9hcltqvgp27dr3rf78g9jmkac6s6ntmugwgkw3cxg7s7h7y9mmuxj563txpazcwl58wdpvfkm4aq62cl4z
+seed một,0-49,addr1q9exzqlgakcxxac9mu74zjpzr2ha90yktuc6xpp57tz58u68nfqqsdtksuyg5enhcag6ul96ufmf6ce3p84fz34ny0fs78s482
 seed hai,0-9,
-seed ba,"5, 10, 15",addr1qx2luazflus83phn9hcltqvgp27dr3rf78g9jmkac6s6ntmugwgkw3cxg7s7h7y9mmuxj563txpazcwl58wdpvfkm4aq62cl4z
+seed ba,"5, 10, 15",addr1q9exzqlgakcxxac9mu74zjpzr2ha90yktuc6xpp57tz58u68nfqqsdtksuyg5enhcag6ul96ufmf6ce3p84fz34ny0fs78s482
 ```
 
 ## Giấy phép
@@ -330,3 +333,4 @@ Nếu gặp vấn đề hoặc có câu hỏi:
 3. Xác minh định dạng file CSV của bạn khớp với các ví dụ
 4. Đảm bảo tất cả địa chỉ donor đã được đăng ký với Scavenger Mine
 5. Với thao tác hoàn tác, đảm bảo địa chỉ có donation đang hoạt động để hoàn tác
+

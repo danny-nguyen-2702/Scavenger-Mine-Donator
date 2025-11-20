@@ -1,6 +1,6 @@
 # Công cụ Donation Scavenger Mine
 
-Một công cụ toàn diện để tự động hóa việc chuyển nhượng token NIGHT từ nhiều địa chỉ ví đến các địa chỉ nhận được chỉ định thông qua Scavenger Mine API.
+Một công cụ để tự động hóa việc chuyển nhượng token NIGHT từ nhiều địa chỉ ví đến các địa chỉ khác thông qua Scavenger Mine API.
 
 ## Tính năng của tool
 
@@ -42,8 +42,8 @@ Một công cụ toàn diện để tự động hóa việc chuyển nhượng 
   - Khoảng: `"0-49"` (xử lý tài khoản từ 0 đến 49)
   - Kết hợp: `"0, 5, 10-15, 20, 25-35"` (kết hợp riêng lẻ và khoảng)
 - `recipient address`: Địa chỉ Cardano sẽ nhận token NIGHT đã hợp nhất
-  - Để trống để hoàn tác donation trước đó (tự chuyển nhượng)
-  - Cũng có thể dùng từ "self" để chỉ tự chuyển nhượng
+  - Để trống nếu bạn muốn hoàn tác lệnh donation trước đó
+  - Cũng có thể dùng từ "self" để chỉ tự chuyển nhượng về cho chính ví donor
   
 ## Đầu ra
 
@@ -87,7 +87,7 @@ Công cụ tạo file Excel có dấu thời gian (ví dụ: `donation_results_2
    Assign accumulated Scavenger rights to: <địa_chỉ_nhận>
    ```
 
-   Với tính năng tự chuyển nhượng (hoàn tác), địa chỉ nhận giống với địa chỉ donor.
+   Với tính năng hoàn tác, địa chỉ nhận sẽ giống với địa chỉ gửi (donor).
 
 5. **Gửi API**: Gửi mỗi donation đến Scavenger Mine API endpoint:
 
@@ -192,7 +192,7 @@ Ví dụ: `donation_results_20240315_143022.xlsx`
 }
 ```
 
-### Hoàn tác thành công (Tự chuyển nhượng)
+### Hoàn tác thành công (Tự chuyển về chính nó)
 
 ```json
 {
@@ -202,7 +202,7 @@ Ví dụ: `donation_results_20240315_143022.xlsx`
 }
 ```
 
-### Donation thất bại
+### Chuyển NIGHT thất bại
 
 ```json
 {
@@ -274,10 +274,3 @@ Nếu gặp vấn đề hoặc có câu hỏi:
 3. Xác minh định dạng file CSV của bạn khớp với các ví dụ
 4. Đảm bảo tất cả địa chỉ donor đã được đăng ký với Scavenger Mine
 5. Với thao tác hoàn tác, đảm bảo địa chỉ có donation đang hoạt động để hoàn tác
-
-
-
-
-
-
-

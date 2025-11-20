@@ -133,7 +133,7 @@ Công cụ bao gồm độ trễ 1.5 giây giữa các lần gọi API để tr�
 1. **Bảo mật Seed Phrase**: Giữ file `donor_wallets.csv` của bạn an toàn và không bao giờ chia sẻ
 2. **Nội dung báo cáo bị cắt ngắn**: Seed phrase bị cắt ngắn trong log và báo cáo vì lý do bảo mật
 3. **Xử lý cục bộ**: Tất cả các thao tác mã hóa được thực hiện cục bộ
-4. **Bảo mật API**: Chỉ gửi chữ ký đến API, không gửi seed phrase
+4. **Bảo mật API**: Tool chỉ gửi chữ ký của bạn đến API của Scavenger Mine, không gửi seed phrase
 
 ## File đầu ra có dấu thời gian
 
@@ -274,6 +274,7 @@ Nếu gặp vấn đề hoặc có câu hỏi:
 3. Xác minh định dạng file CSV của bạn khớp với các ví dụ
 4. Đảm bảo tất cả địa chỉ donor đã được đăng ký với Scavenger Mine
 5. Với thao tác hoàn tác, đảm bảo địa chỉ có donation đang hoạt động để hoàn tác
+
 
 
 
